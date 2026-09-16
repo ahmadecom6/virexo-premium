@@ -1,0 +1,189 @@
+.journey-map-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 1400px; /* Fixed height so the SVG and absolute percentages have space to stretch */
+  margin: 0 auto;
+  padding: 40px 0;
+  
+  @media (max-width: 768px) {
+    height: 1100px;
+  }
+}
+
+.journey-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.journey-path-bg {
+  fill: none;
+  stroke: rgba(148, 163, 184, 0.2); /* Muted slate */
+  stroke-width: 4px;
+  stroke-dasharray: 8 8;
+  
+  html[data-theme="light"] & {
+    stroke: rgba(15, 23, 42, 0.1);
+  }
+}
+
+.journey-path-progress {
+  fill: none;
+  stroke: var(--accent-primary, #00f2fe);
+  stroke-width: 4px;
+  stroke-linecap: round;
+  /* dasharray and dashoffset are set via JS */
+  transition: stroke-dashoffset 0.1s ease-out; /* Slight smoothing for the scroll tick */
+}
+
+.journey-marker {
+  fill: var(--bg-primary, #0f172a);
+  stroke: var(--accent-primary, #00f2fe);
+  stroke-width: 4px;
+  transition: cx 0.1s ease-out, cy 0.1s ease-out;
+  
+  html[data-theme="light"] & {
+    fill: #ffffff;
+  }
+}
+
+.journey-marker-glow {
+  fill: var(--accent-primary, #00f2fe);
+  opacity: 0.2;
+  transition: cx 0.1s ease-out, cy 0.1s ease-out;
+  filter: blur(8px);
+}
+
+.journey-milestones {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none; /* Let user scroll/click through empty space */
+}
+
+.journey-milestone {
+  position: absolute;
+  width: 320px;
+  transform: translateY(-50%); /* Vertically center on the coordinate */
+  pointer-events: auto; /* Clickable */
+  
+  /* Initial hidden state */
+  opacity: 0;
+  transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  
+  @media (max-width: 768px) {
+    width: 280px;
+  }
+}
+
+.journey-milestone.align-left {
+  /* Positioned to the left of the path dot. 
+     The inline style 'left' represents the dot's X, so we translate back -100% */
+  transform: translate(-100%, -50%);
+}
+
+.journey-milestone.align-right {
+  /* Positioned to the right of the path dot. */
+  transform: translate(0, -50%);
+}
+
+.journey-milestone.is-revealed.align-left {
+  opacity: 1;
+  /* Slide in slightly from the right (moving left) */
+  transform: translate(calc(-100% - 20px), -50%);
+}
+
+.journey-milestone.is-revealed.align-right {
+  opacity: 1;
+  /* Slide in slightly from the left (moving right) */
+  transform: translate(20px, -50%);
+}
+
+/* Fallback for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .journey-path-progress,
+  .journey-marker,
+  .journey-marker-glow {
+    display: none;
+  }
+  
+  .journey-milestone,
+  .journey-milestone.align-left,
+  .journey-milestone.align-right {
+    opacity: 1;
+    transform: translate(-50%, -50%) !important; /* Just center it, or use normal flow */
+    transition: none;
+  }
+  
+  .journey-milestone.align-left { transform: translate(-100%, -50%) !important; }
+  .journey-milestone.align-right { transform: translate(20px, -50%) !important; }
+}
+
+.milestone-content {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  
+  html[data-theme="light"] & {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  }
+}
+
+.milestone-content::before {
+  /* The little pointer arrow pointing to the line */
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.align-left .milestone-content::before {
+  right: -6px;
+  border-bottom: none;
+  border-left: none;
+}
+
+.align-right .milestone-content::before {
+  left: -6px;
+  border-top: none;
+  border-right: none;
+}
+
+.milestone-year {
+  display: inline-block;
+  font-family: var(--font-mono);
+  color: var(--accent-primary, #00f2fe);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  padding: 4px 10px;
+  background: rgba(0, 242, 254, 0.1);
+  border-radius: 999px;
+}
+
+.milestone-content h3 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.milestone-content p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+

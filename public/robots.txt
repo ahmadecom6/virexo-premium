@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://virexo-innovations89.vercel.app/sitemap.xml

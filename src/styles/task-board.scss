@@ -1,0 +1,164 @@
+/* ============================================================================
+   TASK BOARD (KANBAN)
+   ============================================================================ */
+
+.task-board {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 20px;
+  min-height: 500px;
+  /* hide scrollbar for cleaner look */
+  scrollbar-width: none;
+}
+.task-board::-webkit-scrollbar {
+  display: none;
+}
+
+.task-board-column {
+  flex: 0 0 320px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.task-board-column-header {
+  padding: 16px;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.task-board-count {
+  background: rgba(148, 163, 184, 0.15);
+  color: var(--color-text-muted);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+html[data-theme='light'] .task-board-count {
+  background: rgba(15, 23, 42, 0.08);
+}
+
+.task-board-list {
+  list-style: none;
+  margin: 0;
+  padding: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 100px;
+}
+
+.task-board-card {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 16px;
+  cursor: grab;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.task-board-card:active {
+  cursor: grabbing;
+}
+.task-board-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border-color: var(--color-text-muted);
+}
+html[data-theme='light'] .task-board-card {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+html[data-theme='light'] .task-board-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.task-board-card-title { display: block;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: var(--color-text);
+  font-size: 0.95rem;
+}
+
+.task-board-card-candidate { display: block; margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-bottom: 12px;
+}
+
+.task-card-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--theme-accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.7rem;
+}
+
+.task-board-card-due {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.task-board-card-due.is-overdue {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.task-board-card-actions { margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--color-border);
+  padding-top: 12px;
+}
+.task-board-card-actions button {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.task-board-card-actions button:hover:not(:disabled) {
+  background: rgba(148, 163, 184, 0.15);
+  color: var(--color-text);
+}
+.task-board-card-actions button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+html[data-theme='light'] .task-board-card-actions button:hover:not(:disabled) {
+  background: rgba(15, 23, 42, 0.05);
+}
+
+/* Kanban dragging state classes */
+.task-board-list.is-dragging-over {
+  background: rgba(148, 163, 184, 0.05);
+  border-radius: 6px;
+}
+.task-board-card.is-dragging {
+  opacity: 0.5;
+}
+
+

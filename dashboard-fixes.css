@@ -1,0 +1,82 @@
+/* SIDEBAR COLLAPSE FIX */
+@media (min-width: 901px) {
+  .portal-sidebar {
+    transition: width 0.3s ease;
+    overflow-x: hidden;
+  }
+  .portal-sidebar.is-collapsed {
+    width: 76px;
+  }
+  .portal-sidebar.is-collapsed .portal-brand-text,
+  .portal-sidebar.is-collapsed .portal-nav span:not(.nav-icon-span),
+  .portal-sidebar.is-collapsed .nav-badge,
+  .portal-sidebar.is-collapsed .portal-shortcuts-label,
+  .portal-sidebar.is-collapsed .portal-shortcut-btn span:not(svg),
+  .portal-sidebar.is-collapsed .portal-sidebar-logout span {
+    display: none;
+  }
+  .portal-sidebar.is-collapsed .portal-brand {
+    justify-content: center;
+  }
+  .portal-sidebar.is-collapsed .portal-nav-item {
+    justify-content: center;
+    padding: 10px 0;
+  }
+  .portal-sidebar.is-collapsed .portal-shortcut-btn {
+    justify-content: center;
+    padding: 10px;
+  }
+  .portal-sidebar.is-collapsed .portal-shortcut-btn svg {
+    margin: 0;
+  }
+}
+
+/* NOTIFICATIONS UI FIX */
+.portal-notification-panel {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+  padding: 0 !important;
+  background: var(--bg-secondary) !important;
+  overflow: hidden !important;
+}
+
+.portal-notification-item {
+  display: flex !important;
+  gap: 12px !important;
+  padding: 12px 14px !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  background: transparent !important;
+  color: inherit !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  transform: none !important;
+  box-shadow: none !important;
+  width: 100% !important;
+  text-align: left !important;
+}
+
+.portal-notification-item:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  transform: none !important;
+}
+
+html[data-theme='light'] .portal-notification-item:hover {
+  background: rgba(0, 0, 0, 0.05) !important;
+}
+
+.portal-notification-item strong {
+  display: block !important;
+  color: var(--text-primary) !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+}
+
+.portal-notification-item p {
+  margin-top: 4px !important;
+  color: var(--text-muted) !important;
+  font-size: 0.75rem !important;
+  line-height: 1.4 !important;
+  white-space: normal !important;
+}
+

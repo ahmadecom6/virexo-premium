@@ -1,0 +1,80 @@
+export const services = [
+  {
+    id: 'full-stack-web-development',
+    title: 'Full-Stack Web Development',
+    short: 'Reliable digital products that connect business logic, UX, and performance into one clear system.',
+    problem: 'Businesses lose time and trust when their website, customer journey, and backend systems are fragmented or brittle.',
+    solution: 'We design and build resilient frontend, API, and data-layer systems around the actual flow of your business operations.',
+    benefit: 'Faster launches, better customer confidence, and a scalable product foundation that is easier to maintain.',
+    process: ['Discovery and requirements', 'UX and architecture mapping', 'Build and validation', 'Launch and support'],
+    technologies: ['React', 'Node.js', 'Express.js', 'PostgreSQL', 'REST APIs'],
+    deliverables: ['Responsive web app', 'Production-ready backend', 'Deployment setup', 'Technical documentation'],
+    bestFor: 'Businesses that need a reliable digital product or internal platform.',
+    idealFor: 'Startups, SMEs, service businesses, and growing product teams.'
+  },
+  {
+    id: 'ai-business-automation',
+    title: 'AI and Business Automation',
+    short: 'Smarter workflows that reduce repetitive work and improve operational consistency.',
+    problem: 'Manual tasks, scattered information, and repetitive processes create delay, missed opportunities, and unnecessary effort.',
+    solution: 'We identify workflow bottlenecks, connect the right integrations, and apply practical AI automations where they create measurable leverage.',
+    benefit: 'More time for decision-making, fewer repetitive tasks, and a more dependable team operation.',
+    process: ['Workflow audit', 'Automation design', 'Build and testing', 'Team handoff and iteration'],
+    technologies: ['JavaScript', 'OpenAI APIs', 'Node.js', 'REST APIs', 'Automation tools'],
+    deliverables: ['Workflow map', 'Automation prototype', 'Integration layer', 'Usage guide'],
+    bestFor: 'Teams overwhelmed by repetitive admin or operational friction.',
+    idealFor: 'Agencies, service providers, operations teams, and growing businesses.'
+  },
+  {
+    id: 'ui-ux-product-design',
+    title: 'UI/UX and Product Design',
+    short: 'Interfaces and product experiences that can be understood quickly and used confidently.',
+    problem: 'Complex products often fail because the experience is unclear, inconsistent, or difficult to trust on first use.',
+    solution: 'We combine user insight, product clarity, and visual design into a polished experience that supports the actual task flow.',
+    benefit: 'Stronger customer trust, better task completion, and a product story that teams can build from with confidence.',
+    process: ['Research and user flows', 'Wireframes and prototyping', 'Visual system design', 'Design handoff and refinement'],
+    technologies: ['Figma', 'UX Research', 'Design Systems', 'React', 'SCSS'],
+    deliverables: ['User journey maps', 'Wireframes', 'UI system', 'Prototype and handoff'],
+    bestFor: 'Businesses that need better product clarity and stronger user journeys.',
+    idealFor: 'Early-stage companies, SaaS teams, and product-led businesses.'
+  },
+  {
+    id: 'ecommerce-development',
+    title: 'E-commerce Development',
+    short: 'Storefronts and commerce experiences designed to convert without adding friction.',
+    problem: 'Online businesses struggle when checkout, catalog, and product trust signals are unclear or difficult to use.',
+    solution: 'We create clean storefronts and product experiences that balance conversion, usability, and operational simplicity.',
+    benefit: 'A more confident buying experience, higher engagement, and a platform easier for teams to manage.',
+    process: ['Store strategy', 'Product UX design', 'Cart and checkout flows', 'Launch and optimization'],
+    technologies: ['React', 'Node.js', 'Stripe', 'REST APIs', 'PostgreSQL'],
+    deliverables: ['Product catalog', 'Checkout flow', 'Inventory-ready structure', 'Launch support'],
+    bestFor: 'Businesses selling products online and wanting a more polished experience.',
+    idealFor: 'Retail brands, digital shops, and product marketplaces.'
+  },
+  {
+    id: 'api-development-integration',
+    title: 'API Development and Integration',
+    short: 'Connected systems that move data reliably between business tools and digital experiences.',
+    problem: 'Disconnected tools, poor data handoff, and inconsistent integrations slow work and create operational risk.',
+    solution: 'We build and connect secure API layers that unify your platform, data sources, and business processes.',
+    benefit: 'Lower manual work, clearer data flow, and stronger operational reliability across the business.',
+    process: ['System audit', 'API design', 'Integration build', 'Testing and deployment'],
+    technologies: ['Express.js', 'Node.js', 'REST APIs', 'MySQL', 'JWT'],
+    deliverables: ['API endpoints', 'Integration plan', 'Data mappings', 'Monitoring setup'],
+    bestFor: 'Businesses using multiple tools and needing dependable data flow.',
+    idealFor: 'SaaS teams, internal operations, and service businesses.'
+  },
+  {
+    id: 'website-maintenance',
+    title: 'Website Maintenance',
+    short: 'Ongoing support to keep sites dependable, secure, and ready for continuous improvement.',
+    problem: 'Websites lose performance and stability over time when they are not monitored, updated, and refined consistently.',
+    solution: 'We provide structured maintenance plans that cover updates, issue tracking, content improvements, and performance checks.',
+    benefit: 'A healthier digital presence, fewer avoidable failures, and a better experience for customers and staff.',
+    process: ['Review and monitoring', 'Priority fixes', 'Content and UX updates', 'Ongoing reporting'],
+    technologies: ['Performance checks', 'Security review', 'Monitoring', 'CMS support'],
+    deliverables: ['Maintenance plan', 'Issue tracking', 'Performance updates', 'Quarterly review'],
+    bestFor: 'Organizations that want calm, proactive website care.',
+    idealFor: 'Businesses, schools, agencies, and professional services.'
+  }
+]

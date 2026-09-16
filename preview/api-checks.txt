@@ -1,0 +1,17 @@
+Vex provider unavailable (busy; status 429).
+Vex provider unavailable (configuration; status 403).
+Vex provider unavailable (unavailable; status 500).
+Vex provider unavailable (unavailable; status network/timeout).
+✔ rejects injected system roles, empty/oversized messages and invalid conversation endings (1.50986ms)
+✔ no key produces explicitly labelled website guidance without a provider call (0.840841ms)
+✔ provider request stays server-side, includes website knowledge, and returns genuine AI mode (0.879796ms)
+✔ quota/configuration/provider failures are visibly fallback, never fake AI success (1.619635ms)
+✔ API route validates requests and enforces the burst limit (0.993224ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 107.371256

@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  /* Tech-HUD Dark Console Palette Override */
+  --bg-primary: #020304 !important;
+  --bg-secondary: #050709 !important;
+  --bg-tertiary: #090B0E !important;
+  --bg-surface: rgba(5, 7, 9, 0.8) !important;
+  
+  --text-primary: #E8ECEF !important;
+  --text-secondary: #7A8590 !important;
+  --text-muted: #5A6570 !important;
+
+  --color-cyan-glow: #00E5FF !important;
+  --theme-accent: #00E5FF !important;
+  --cinema-mint: #00E5FF !important;
+  
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+body {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* 1. Global Grid Background */
+.hud-grid-background {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 229, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 229, 255, 0.04) 1px, transparent 1px);
+}
+
+.hud-grid-background::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(0, 229, 255, 0.06) 50%, transparent);
+  animation: hud-scan 8s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes hud-scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+/* 2. Typography Helpers */
+.font-mono {
+  font-family: var(--font-mono) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.hud-glow-text {
+  color: var(--color-cyan-glow) !important;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.9), 0 0 20px rgba(0, 229, 255, 0.5) !important;
+  font-style: normal !important; /* Remove old italic */
+}
+
+.hud-page-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.15em;
+  margin-bottom: 16px;
+  display: block;
+}
+
+/* 3. Navigation & Header */
+.site-nav {
+  background: rgba(5, 6, 7, 0.9) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.site-nav-container .nav-links a {
+  font-family: var(--font-mono) !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase !important;
+}
+
+/* The SYSTEM ONLINE badge in Navbar */
+.hud-system-online {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-cyan-glow);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  padding: 4px 10px;
+  border-radius: 4px;
+  letter-spacing: 0.1em;
+  background: rgba(0, 229, 255, 0.05);
+  margin-left: 12px;
+}
+.hud-system-online .dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-cyan-glow);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--color-cyan-glow);
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+/* 4. Buttons globally */
+.button-primary, .nav-contact-btn {
+  border-radius: 2px !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.8rem !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  background: rgba(0, 229, 255, 0.05) !important;
+  border: 1px solid rgba(0, 229, 255, 0.4) !important;
+  color: var(--color-cyan-glow) !important;
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.1) !important;
+  transition: all 0.2s ease !important;
+}
+.button-primary:hover, .nav-contact-btn:hover {
+  background: rgba(0, 229, 255, 0.15) !important;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.3) !important;
+  border-color: var(--color-cyan-glow) !important;
+}
+
+/* 5. Cards & Panels globally */
+.service-card, .project-card, .portal-panel-wrapper, .journey-card-content {
+  border: 1px solid rgba(0, 229, 255, 0.25) !important;
+  background: rgba(10, 12, 14, 0.7) !important;
+  border-radius: 4px !important;
+  transition: border-color 0.3s ease, background 0.3s ease !important;
+}
+.service-card:hover, .project-card:hover {
+  border-color: rgba(0, 229, 255, 0.4) !important;
+  background: radial-gradient(circle at center, rgba(0, 229, 255, 0.08) 0%, rgba(10, 12, 14, 0.7) 100%) !important;
+}
+
+/* 6. AI Agent Chat Restyling */
+.aether-ai-panel {
+  background: rgba(5, 6, 7, 0.95) !important;
+  border: 1px solid rgba(0, 229, 255, 0.3) !important;
+  border-radius: 4px !important;
+  box-shadow: 0 12px 40px rgba(0, 229, 255, 0.15) !important;
+}
+.aether-ai-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  padding: 16px !important;
+}
+.aether-ai-header h3 {
+  font-family: var(--font-mono) !important;
+  font-size: 0.9rem !important;
+  letter-spacing: 0.1em !important;
+  color: var(--text-primary) !important;
+  text-transform: uppercase;
+}
+.aether-ai-header p {
+  font-family: var(--font-mono) !important;
+  font-size: 0.65rem !important;
+  color: var(--color-cyan-glow) !important;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+.aether-ai-bubble.bot {
+  background: rgba(0, 229, 255, 0.05) !important;
+  border: 1px solid rgba(0, 229, 255, 0.15) !important;
+  border-radius: 2px !important;
+  color: var(--text-primary) !important;
+}
+.aether-ai-bubble.user {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 2px !important;
+}
+.aether-ai-suggestions {
+  display: flex !important;
+  gap: 8px !important;
+  flex-wrap: wrap !important;
+}
+.aether-ai-suggestions button {
+  font-family: var(--font-mono) !important;
+  font-size: 0.65rem !important;
+  background: rgba(10, 12, 14, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 2px !important;
+  color: var(--text-secondary) !important;
+  padding: 6px 12px !important;
+  text-transform: uppercase !important;
+}
+.aether-ai-suggestions button:hover {
+  border-color: var(--color-cyan-glow) !important;
+  color: var(--color-cyan-glow) !important;
+}
+.aether-ai-input input {
+  font-family: var(--font-mono) !important;
+  font-size: 0.8rem !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  border-radius: 2px !important;
+  color: var(--text-primary) !important;
+}
+.aether-ai-input button {
+  background: var(--color-cyan-glow) !important;
+  color: #000 !important;
+  border-radius: 2px !important;
+}
+.aether-ai-trigger {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999 !important;
+  background: rgba(5, 6, 7, 0.9) !important;
+  border: 1px solid var(--color-cyan-glow) !important;
+  box-shadow: 0 0 16px rgba(0, 229, 255, 0.3) !important;
+  color: var(--color-cyan-glow) !important;
+}
+
+
+/* Fix Navbar Overflow */
+.site-nav-container { max-width: 1440px !important; gap: 16px !important; padding: 0 16px !important; }
+.nav-actions { flex-shrink: 0 !important; gap: 8px !important; }
+
+
+@media (max-width: 900px) { .hud-hero { grid-template-columns: 1fr !important; text-align: center !important; } .hud-hero .hero-actions { justify-content: center !important; } }
+
+
+.button-ghost, .button-primary, .nav-portal-shortcut, .nav-contact-btn { white-space: nowrap !important; }
+.nav-portal-shortcut { display: inline-flex !important; align-items: center !important; gap: 8px !important; padding: 8px 18px !important; border-radius: 4px !important; }
+.nav-actions { gap: 12px !important; }
+
+
+.button-ghost, .button-primary, .nav-contact-btn { border-radius: 4px !important; }
+
+
+@media (max-width: 1024px) { .nav-actions { display: none !important; } }
+
+
+.brand-preloader { background: #020304 !important; z-index: 999999 !important; } .brand-preloader span { border-color: #00E5FF !important; color: #00E5FF !important; text-shadow: 0 0 10px rgba(0,229,255,0.8) !important; }
+
+
+.nav-contact-btn { border: 1px solid rgba(0, 229, 255, 0.4) !important; color: #00E5FF !important; background: transparent !important; padding: 8px 18px !important; border-radius: 4px !important; font-weight: bold !important; transition: all 0.3s ease !important; }
+.nav-contact-btn:hover { background: rgba(0, 229, 255, 0.1) !important; }
+.site-nav-container { gap: 8px !important; }
+.nav-actions { gap: 8px !important; }
+@media (max-width: 1200px) { .nav-actions { display: none !important; } .nav-links:not(.is-open) { display: none !important; } .nav-menu-button { display: flex !important; } }
+
+
+
+@media (max-width: 1200px) { .nav-menu-button { display: flex !important; } }
+
+
+
+.feature-card p, .service-card p { width: 100% !important; max-width: none !important; word-wrap: break-word !important; }
+
+
+.visual-highlight-item > div { display: flex !important; flex-direction: column !important; width: 100% !important; max-width: none !important; } .visual-highlight-item strong, .visual-highlight-item span { width: 100% !important; max-width: none !important; white-space: normal !important; word-wrap: break-word !important; }
+.visual-highlight-item span:last-child { display: block !important; width: 100% !important; }
+
+
+
+
+.visual-highlight-icon { width: auto !important; max-width: max-content !important; flex-shrink: 0 !important; }
+
+
+

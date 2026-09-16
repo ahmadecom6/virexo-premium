@@ -1,0 +1,80 @@
+/* One ring system. The reference animates the circular icon, not the label. */
+@property --vx-ring-angle { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+@keyframes vx-ring-turn { to { transform: rotate(360deg); } }
+@keyframes vx-border-turn { to { --vx-ring-angle: 360deg; } }
+:root {
+  --vx-ring-colors: #131824 0deg, #5668ff 45deg, #080d16 95deg, #bcccd8 150deg, #f4eddc 169deg, #7d522f 195deg, #080d16 225deg, #37d7ed 270deg, #2a22b0 308deg, #131824 360deg;
+  --vx-ring-bg: #080d15;
+}
+html .vx-ring-icon {
+  position: relative; isolation: isolate; display: inline-grid; place-items: center;
+  flex: 0 0 auto; width: var(--vx-icon-size, 42px); height: var(--vx-icon-size, 42px);
+  border-radius: 50%; background: #070c12; color: #edf5ff; overflow: hidden;
+  box-shadow: 0 0 14px #39bdff12, inset 0 0 0 1px #ffffff14;
+}
+html .vx-ring-icon::before {
+  content: ''; position: absolute; inset: 0; border-radius: 50%;
+  background: conic-gradient(var(--vx-ring-colors)); animation: vx-ring-turn 4s linear infinite;
+  pointer-events: none; z-index: -2;
+}
+html .vx-ring-icon::after {
+  content: ''; position: absolute; inset: 2px; border-radius: 50%;
+  background: radial-gradient(at 30% 15%, #202934, #05090f 72%); z-index: -1; pointer-events: none;
+}
+html .vx-ring-icon > svg { width: 42%; height: 42%; flex-shrink: 0; filter: drop-shadow(0 1px 2px #ffffff33); }
+html .vx-ring-button {
+  position: relative; display: inline-flex; align-items: center; justify-content: flex-start;
+  gap: 13px; min-height: 56px; padding: 5px 23px 5px 6px; border: 1px solid #8ca1b46b;
+  border-radius: 999px; background: linear-gradient(140deg, #151c25, #080d14 72%);
+  color: #edf5ff; font: 600 14px/1.3 var(--font-body, sans-serif); letter-spacing: 0;
+  text-decoration: none; text-transform: none; box-shadow: inset 0 1px 0 #ffffff08;
+  isolation: isolate; cursor: pointer; transition: border-color .25s, box-shadow .25s, transform .25s;
+}
+html .vx-ring-button::before, html .vx-ring-button::after { display: none; }
+html .vx-ring-button:hover { color: #fff; border-color: #c4e4f3; transform: translateY(-2px); box-shadow: 0 6px 28px #41c9ff18; }
+html .vx-ring-button:active { transform: translateY(0); }
+html .vx-ring-button:disabled { cursor: not-allowed; opacity: .5; transform: none; }
+html .vx-ring-button:disabled .vx-ring-icon::before { animation-play-state: paused; }
+html .vx-ring-label { display: inline; position: relative; white-space: normal; }
+html .vx-ring-button:focus-visible, .vx-motion-toggle:focus-visible, .vx-text-link:focus-visible { outline: 2px solid #73e8f6; outline-offset: 5px; }
+/* Existing form and portal buttons share the perimeter treatment without DOM mutation. */
+html :is(.button-primary, .button-ghost, .button-small, .auth-primary-btn, .auth-submit-btn, .banner-primary-btn, .btn-glow-ring, .glow-ring-btn) {
+  --vx-ring-angle: 0deg; position: relative; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  min-height: 44px; padding: 12px 22px; border-radius: 999px !important;
+  border: 1px solid #65839580 !important; background: var(--vx-ring-bg) !important;
+  color: var(--text-primary) !important; font-family: var(--font-body) !important;
+  font-size: 13px !important; line-height: 1.4; letter-spacing: .01em !important;
+  text-transform: none !important; overflow: visible; z-index: auto;
+  transition: border-color .2s, box-shadow .2s, transform .2s;
+}
+html :is(.button-primary, .button-ghost, .button-small, .auth-primary-btn, .auth-submit-btn, .banner-primary-btn, .btn-glow-ring, .glow-ring-btn)::before,
+html .vx-ring-surface::after {
+  content: ''; position: absolute; inset: -1px; width: auto; height: auto; border-radius: inherit;
+  padding: 1px; background: conic-gradient(from var(--vx-ring-angle), transparent 8%, #6874ff 23%, transparent 38%, transparent 55%, #56dbea 73%, #e9e2cc 78%, transparent 91%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  animation: vx-border-turn 5s linear infinite; pointer-events: none; z-index: 1;
+}
+html :is(.button-primary, .button-ghost, .button-small, .auth-primary-btn, .auth-submit-btn, .banner-primary-btn, .btn-glow-ring, .glow-ring-btn)::after { content: none; }
+html :is(.button-primary, .button-ghost, .button-small):hover { transform: translateY(-2px); box-shadow: 0 8px 24px #46dcf119 !important; }
+html :is(.button-primary, .button-ghost, .button-small):disabled { opacity: .5; cursor: not-allowed; transform: none; }
+html .vx-ring-surface { position: relative; isolation: isolate; border-radius: 20px !important; border: 1px solid var(--border-color) !important; }
+html .vx-ring-surface::after { opacity: .36; animation-duration: 8s; transition: opacity .25s; }
+html .vx-ring-surface:nth-child(2n)::after { animation-delay: -3s; }
+html .vx-ring-surface:nth-child(3n)::after { animation-delay: -5s; }
+html .vx-ring-surface:hover::after, html .vx-ring-surface:focus-within::after { opacity: 1; }
+html .vx-service-icon { --vx-icon-size: 52px; margin-bottom: 24px; }
+html[data-theme='light'] { --vx-ring-bg: #fff; }
+html[data-theme='light'] .vx-ring-button { background: linear-gradient(150deg,#fff,#eaf2f8); color: #10263a; border-color: #93a9bb; }
+html[data-theme='light'] .vx-ring-button:hover { color: #074e72; }
+@media (prefers-reduced-motion: reduce) {
+  html .vx-ring-icon::before, html .vx-ring-surface::after,
+  html :is(.button-primary, .button-ghost, .button-small, .auth-primary-btn, .auth-submit-btn, .banner-primary-btn, .btn-glow-ring, .glow-ring-btn)::before { animation: none; }
+  html .vx-ring-button { transition: none; }
+}
+
+html[data-motion='reduced'] .vx-ring-icon::before,
+html[data-motion='reduced'] .vx-ring-surface::after,
+html[data-motion='reduced'] :is(.button-primary, .button-ghost, .button-small, .auth-submit-btn)::before { animation: none; }

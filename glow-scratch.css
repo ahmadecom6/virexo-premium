@@ -1,0 +1,82 @@
+
+/* ── GLOW RING BUTTONS ── */
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes ring-spin {
+  from { --angle: 0deg; }
+  to { --angle: 360deg; }
+}
+
+html[data-theme='dark'] .btn-glow-ring {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 11px 26px;
+  background: transparent;
+  border: none;
+  border-radius: 999px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.22s, box-shadow 0.22s;
+  isolation: isolate;
+  z-index: 0;
+  overflow: hidden;
+}
+
+html[data-theme='dark'] .btn-glow-ring::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 999px;
+  background: conic-gradient(from var(--angle), transparent 70%, #38bdf8, #818cf8, #c084fc, #38bdf8);
+  z-index: -2;
+  animation: ring-spin 3s linear infinite;
+}
+
+html[data-theme='dark'] .btn-glow-ring::after {
+  content: '';
+  position: absolute;
+  inset: 1.5px;
+  border-radius: 999px;
+  background: #0f172a;
+  z-index: -1;
+}
+
+html[data-theme='dark'] .btn-glow-ring:hover {
+  transform: translateY(-2px);
+}
+
+/* Light theme solid button fallback */
+html[data-theme='light'] .btn-glow-ring {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  min-height: 44px;
+  padding: 11px 26px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: filter 0.22s, transform 0.22s, box-shadow 0.22s;
+}
+
+html[data-theme='light'] .btn-glow-ring:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.28);
+}
+

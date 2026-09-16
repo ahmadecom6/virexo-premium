@@ -1,0 +1,31 @@
+diff --git a/src/styles/site.scss b/src/styles/site.scss
+index 0512795..31e496e 100644
+--- a/src/styles/site.scss
++++ b/src/styles/site.scss
+@@ -980,3 +980,328 @@ html[data-motion='reduced'] *, html[data-motion='reduced'] *::before, html[data-
+   .estimate-options { display: grid; }
+   .estimate-options button { width: 100%; text-align: left; }
+ }
++
++
++/* ============================================================================
++   GLOW RING ANIMATED BUTTON
++   ============================================================================ */
++@keyframes glowRingSpinFinal {
++  100% {
++    transform: translate(-50%, -50%) rotate(360deg);
++  }
++}
++
++.glow-ring-btn {
++  position: relative !important;
++  overflow: hidden !important;
++  border: none !important;
++  isolation: isolate;
++  background: transparent !important;
++  border-radius: 999px !important;
++  padding: 6px 14px !important; 
++  box-shadow: none !important;
++}
++
+

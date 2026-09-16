@@ -1,0 +1,31 @@
+diff --git a/src/pages/Home.jsx b/src/pages/Home.jsx
+index 5aeef53..a395e2b 100644
+--- a/src/pages/Home.jsx
++++ b/src/pages/Home.jsx
+@@ -1,11 +1,12 @@
++import { useRef } from 'react'
+ import { Link } from 'react-router-dom'
+-import { motion } from 'framer-motion'
+-import { FiArrowUpRight, FiCheck } from 'react-icons/fi'
++import { FiArrowUpRight, FiCheck, FiCpu, FiZap } from 'react-icons/fi'
+ import ServiceCard from '../components/ServiceCard'
+-import CtaSection from '../components/CtaSection'
+ import EstimateTool from '../components/EstimateTool'
+ import FAQAccordion from '../components/FAQAccordion'
++import CircularCardSlider from '../components/CircularCardSlider'
+ import { faqs, projects, reviews, services, technologyGroups } from '../data'
++import { soundEngine } from '../utils/audio'
+ 
+ const processSteps = [
+   ['01', 'Understand the business problem', 'We align on context, constraints, users, and the outcome that matters.'],
+@@ -15,19 +16,318 @@ const processSteps = [
+ ]
+ 
+ export default function Home() {
+-  return <>
+-    <section className="hero-page"><div className="hero-grid" /><div className="hero-copy"><span className="eyebrow">Virexo Innovations / Digital systems studio</span><h1>Build the <em>signal</em> inside your next big idea.</h1><p>We create thoughtful digital products, intelligent workflows, and interfaces that help ambitious teams move from complexity to clarity.</p><div className="hero-actions"><Link className="button-primary" to="/services">Explore our services <FiArrowUpRight /></Link><Link className="button-ghost" to="/contact">Request a consultation <FiArrowUpRight /></Link></div><div className="hero-proof"><span><b>01</b> Strategy with substance</span><span><b>02</b> Technology with purpose</span></div></div><motion.div className="hero-orbit" animate={{ rotate: 360 }} transition={{ duration: 26, repeat: Infinity, ease: 'linear' }}><div className="orbit-core"><span>VX</span><small>Ideas / Systems / Motion</small></div><i /><i /><i /></motion.div><div className="hero-coordinate">33.6844° N / 73.0479° E<br /><span>Digital territory, open for ideas</span></div></section>
+-    <section className="intro-strip"><span>Independent digital partner</span><p>Virexo works where business ambition meets the messy, exciting work of making something real.</p><Link to="/about">Why Virexo <FiArrowUpRight /></Link></section>
+-    <section className="home-section approach-preview"><div className="section-heading"><span className="eyebrow">How we work</span><h2>A calm path through <em>complexity.</em></h2><p>From the first conversation to post-launch support, we keep the work clear, collaborative, and connected to the business result.</p></div><div className="process-preview-grid">{processSteps.map(([number, title, text]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{text}</p></article>)}</div></section>
+-    <section className="home-section cv-drop-section" id="careers"><div className="section-heading"><span className="eyebrow">Work with Virexo</span><h2>Bring your perspective to the <em>next idea.</em></h2><p>Drop your CV and tell us where you can make useful work happen. We review every application with care.</p></div><form className="cv-drop-form" data-cv-form><div className="cv-drop-fields"><label>Full name<input name="name" type="text" required placeholder="Your full name" /></label><label>Email<input name="email" type="email" required placeholder="you@company.com" /></label><label>Specialization<input name="specialization" type="text" required placeholder="e.g. Product design" /></label><label>Experience<select name="experience" required><option value="">Select experience</option><option>0-2 years</option><option>3-5 years</option><option>6+ years</option></select></label></div><label className="cv-dropzone" data-cv-dropzone><input name="resume" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required /><span className="cv-drop-icon">↑</span><strong>Drop your CV here or browse</strong><small>PDF, DOC, or DOCX up to 5MB</small><span className="cv-file-name" data-cv-file>Nothing selected yet</span></label><div className="cv-drop-actions"><button className="button-primary" type="submit">Send my CV <FiArrowUpRight /></button><p className="cv-status" data-cv-status aria-live="polite"></p></div></form></section>
+-    <section className="home-section services-preview"><div className="section-heading"><span className="eyebrow">01 / Capabilities</span><h2>Three ways to create <em>forward motion.</em></h2><p>Focused expertise, brought together around the outcome your business needs next.</p></div><div className="service-preview-grid">{services.map((service) => <ServiceCard key={service.id} service={service} />)}</div><Link className="inline-link" to="/services">See all service detail <FiArrowUpRight /></Link><EstimateTool /></section>
+

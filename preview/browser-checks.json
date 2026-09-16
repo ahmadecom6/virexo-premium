@@ -1,0 +1,18 @@
+{
+  "results": [
+    "Login 360: text inside cards, no overflow",
+    "Login 768: text inside cards, no overflow",
+    "Login 1440: text inside cards, no overflow",
+    "Carousel: next, previous, pause",
+    "Carousel 390: no page overflow",
+    "Carousel 768: no page overflow",
+    "Carousel 1024: no page overflow",
+    "Real backend guide reply; Escape restores launcher focus",
+    "Conversation survives route change",
+    "Mocked AI success switches status",
+    "429 response visible; draft retained",
+    "Chat mobile fits screen",
+    "Reduced motion stops auto-rotation"
+  ],
+  "errors": []
+}
